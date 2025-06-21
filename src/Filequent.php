@@ -6,7 +6,7 @@ namespace Zidbih\Filequent;
  * Base model for working with JSON file-based collections.
  * Supports basic CRUD and relationship operations.
  */
-class Filequent
+class Filequent implements \JsonSerializable
 {
     /**
      * The collection name (filename without extension).
@@ -142,6 +142,16 @@ class Filequent
         $manager->write(array_values($records));
 
         return count($records) < $originalCount;
+    }
+
+    public function toArray(): array
+    {
+        return $this->attributes;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
     }
 
     /**
