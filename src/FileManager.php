@@ -9,7 +9,7 @@ class FileManager {
     public function __construct(string $collection, ?string $basePath = null) {
         $this->collection = $collection;
 
-        $basePath = $basePath ?? (__DIR__ . '/../data');
+        $basePath = $basePath ?? getcwd() . '/data';;
         if (!is_dir($basePath)) {
             mkdir($basePath, 0755, true);
         }
