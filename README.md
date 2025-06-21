@@ -202,7 +202,7 @@ $user = User::create(['name' => 'Ahmed']);
 Post::create([
     'title' => 'Hello World',
     'body' => 'Welcome to Filequent!',
-    'user_id' => $user->id,
+    'user_id' => $user->getAttribute("id"),
 ]);
 
 // Retrieve all posts by this user
