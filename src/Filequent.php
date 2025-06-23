@@ -109,6 +109,7 @@ class Filequent implements \JsonSerializable
 
         foreach ($records as &$record) {
             if ($record['id'] === $this->attributes['id']) {
+                $data["updated_at"] = date("d-m-y H:i:s");
                 $record = array_merge($record, $data);
                 $this->attributes = $record;
                 $updated = true;

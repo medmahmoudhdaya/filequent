@@ -31,10 +31,20 @@ class FileManager {
 
     public function insert(array $record): array {
         $data = $this->read();
+
         $record['id'] = $this->generateId($data);
+       
+        $this->addTimestamps($record);
+
         $data[] = $record;
         $this->write($data);
+
         return $record;
+    }
+
+    public function addTimestamps(&$record): void {
+        $record["created_at"] = date("d-m-y H:i:s");
+        $record["updated_at"] = null;
     }
 
     protected function generateId(array $data): int {
