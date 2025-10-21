@@ -4,6 +4,8 @@ use PHPUnit\Framework\TestCase;
 use Zidbih\Filequent\Filequent;
 use Zidbih\Filequent\FileManager;
 
+use function PHPUnit\Framework\assertEquals;
+
 class User extends Filequent
 {
     protected static string $collection = 'users';
@@ -228,5 +230,13 @@ final class FilequentTest extends TestCase
         $users = User::all();
         $this->assertIsArray($users);
         $this->assertCount(0, $users);
+    }
+
+    public function testPropertyOnModelCanBeFetchedWithoutCallingGetAttributeMethod()
+    {
+        $user = User::create(['name' => 'User Name', 'email' => 'email@email.com']);
+
+        $this>assertEquals("User Name", $user->name);
+        $this>assertEquals("email@email.com", $user->email);
     }
 }

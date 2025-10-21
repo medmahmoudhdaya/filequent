@@ -234,4 +234,13 @@ class Filequent implements \JsonSerializable
 
         return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $shortName)) . '_id';
     }
+
+    /**
+     * Handle access to undefined or non-existing properties on the model.
+     */
+    public function __get($name)
+    {
+        return $this->getAttribute($name);
+    }
+    
 }
