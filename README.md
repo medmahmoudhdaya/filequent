@@ -82,7 +82,7 @@ $user = User::create(['name' => 'Alice']);
 ### Read
 
 ```php
-$found = User::find($user->getAttribute('id'));// by ID
+$found = User::find($user->id);// by ID
 $allUsers = User::all();// all records
 ```
 
@@ -202,7 +202,7 @@ $user = User::create(['name' => 'Ahmed']);
 Post::create([
     'title' => 'Hello World',
     'body' => 'Welcome to Filequent!',
-    'user_id' => $user->getAttribute("id"),
+    'user_id' => $user->id,
 ]);
 
 // Retrieve all posts by this user
